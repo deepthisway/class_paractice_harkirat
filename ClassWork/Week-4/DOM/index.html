@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+</head>
+
+<body>
+    <script>
+        async function getSum()   {
+            let a = document.getElementById("First number").value;
+            let b = document.getElementById("Second number").value;
+            let element = document.getElementById("answer");
+            // element.innerHTML = parseInt(a) + parseInt(b);
+            // using backend to calculate sum(using out own locally created server)
+
+            let res = await fetch("http://localhost:4000/sum?num1=" +a +"&num2=" + b);  // this also returns back a promise
+            let ans = await res.text();       // used await as it returns back a promise
+            element.innerHTML = ans;
+        }
+    </script>
+
+    <input type ="text" id="First number"></input>
+    <br/>
+    <br/>
+    <br/>
+    <input type ="text" id="Second number"></input>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <button onclick="getSum()">Calculate Sum</button>
+
+    <div id="answer"></div>
+</body>
+</html>

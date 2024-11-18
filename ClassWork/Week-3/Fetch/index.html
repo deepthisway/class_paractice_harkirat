@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Define an asynchronous function named getInfo. async represent that this returns something async (promise)
+async function getInfo() {
+  // Fetch data from the API endpoint and wait for the Promise to resolve
+  const data = await fetch("https://fakerapi.it/api/v1/persons");
+  
+  // Parse the fetched data as JSON and wait for the Promise to resolve
+  const finalData = await data.json();
+  
+  // Log the parsed JSON data to the console
+  console.log(finalData);
+}
+
+        }
+    </script>
+    <button onclick="getInfo()">Get Info</button>
+</body>
+</html>
